@@ -108,6 +108,7 @@ function move_player()
 end
 
 function move(x,y)
+	if solid(x,y) then return end
 	plyr.x=x
 	plyr.y=y
 end
