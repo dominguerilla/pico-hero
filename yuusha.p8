@@ -39,30 +39,7 @@ end
 
 function draw_pstats()
 	--draw menu bg
-	--top row
-	spr(64,pstatx,pstaty)
-	for w=pstatx+1,pstatx+pstatw-1,cellsize do
-		spr(65,w,pstaty)	
-	end
-	spr(66,pstatx+pstatw,pstaty)
-	
-	--middle rows
-	for h=pstaty+1,pstaty+pstath-1,cellsize do
-		spr(67,pstatx,h)
-		for w=pstatx+1,pstatx+pstatw-1,cellsize do
-			spr(72,w,h)
-		end
-		spr(68,pstatx+pstatw,h)
-	end
-	
-	--bottom row
-	--there's something wrong;
-	--try commenting out inner loop
-	spr(69,pstatx,pstaty+pstath)
-		for x=pstatx+1,pstatx+pstatw-1,cellsize do
-			spr(70,x,pstaty+pstath)
-		end
-	spr(71,pstatx+pstatw,pstaty+pstath)
+	draw_box(pstatx,pstaty,pstatw,pstath)
 
 	--print text
 	print(plyr.name, pstatx+txtoffsetx, pstaty+txtoffsety)
@@ -72,6 +49,31 @@ function draw_pstats()
 	--print("time		"..time(),pstatx+txtoffsetx,(5*pstaty)+txtoffsety)
 end
 
+function draw_box(bx,by,bw,bh)
+	--top row
+	spr(64,bx,by)
+	for w=bx+1,bx+bw-1,cellsize do
+		spr(65,w,by)	
+	end
+	spr(66,bx+bw,by)
+	
+	--middle rows
+	for h=by+1,by+bh-1,cellsize do
+		spr(67,bx,h)
+		for w=bx+1,bx+bw-1,cellsize do
+			spr(72,w,h)
+		end
+		spr(68,bx+bw,h)
+	end
+	
+	--bottom row
+	spr(69,bx,by+bh)
+		for x=bx+1,bx+bw-1,cellsize do
+			spr(70,x,by+bh)
+		end
+	spr(71,bx+bw,by+bh)
+	
+end
 -->8
 --update()
 function _update()
